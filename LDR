@@ -3,7 +3,6 @@
 // https://www.youtube.com/watch?v=X9cC0o9viTo&list=PLX2gX-ftPVXU3oUFNATxGXY90AULiqnWT&index=4
 
 const float ERROR_MEASUREMENT = 2.0;	// Kalman filter constant
-const float PROCESS_NOISE	  = 0.06;	// Kalman filter constant
 
 float errorEstimate	= 0.2;	// Kalman filter variable
 float lastEstimate	= 0;	// Kalman filter variable
