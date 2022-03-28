@@ -1,8 +1,6 @@
 
 // Video tutorial on Kalman filter:
 // https://www.youtube.com/watch?v=X9cC0o9viTo&list=PLX2gX-ftPVXU3oUFNATxGXY90AULiqnWT&index=4
-// Code reference:
-// https://github.com/denyssene/SimpleKalmanFilter
 
 const float ERROR_MEASUREMENT = 2.0;	// Kalman filter constant
 const float PROCESS_NOISE	  = 0.06;	// Kalman filter constant
