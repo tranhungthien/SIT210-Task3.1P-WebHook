@@ -2,7 +2,6 @@
 #define DELAY_TIME 30000
 
 const float ERROR_MEASUREMENT = 2.0;	// Kalman filter constant
-const float PROCESS_NOISE	  = 0.06;	// Kalman filter constant
 
 float errorEstimate	= 0.2;	// Kalman filter variable
 float lastEstimate	= 0;	// Kalman filter variable
