@@ -38,7 +38,7 @@ float estimate(float measurement){
     float kalmanGain = errorEstimate/(errorEstimate + ERROR_MEASUREMENT);
     float currentEstimate = lastEstimate + kalmanGain * (measurement - lastEstimate);
     
-    errorEstimate =  (1.0 - kalmanGain ) * errorEstimate + abs(lastEstimate - currentEstimate) * PROCESS_NOISE;
+    errorEstimate =  (1.0 - kalmanGain ) * errorEstimate;
     lastEstimate = currentEstimate;
     
     return currentEstimate;
