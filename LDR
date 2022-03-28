@@ -1,5 +1,5 @@
 
-// Watch the video tutorial of the kalman filter:
+// Video tutorial on kalman filter:
 // https://www.youtube.com/watch?v=X9cC0o9viTo&list=PLX2gX-ftPVXU3oUFNATxGXY90AULiqnWT&index=4
 
 const float ERROR_MEASUREMENT = 2.0;	// Kalman filter constant
