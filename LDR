@@ -1,0 +1,32 @@
+//https://www.youtube.com/watch?v=iE5ALWSZCis&t=134sv
+const float ERROR_MEASUREMENT = 2.0;	// Kalman filter constant
+const float PROCESS_NOISE	  = 0.06;	// Kalman filter constant
+
+float errorEstimate	= 0.2;	// Kalman filter variable
+float lastEstimate	= 0;	// Kalman filter variable
+
+int photoResistor   = A0;
+int data            = 0;
+
+void setup(){
+    pinMode(photoResistor, INPUT);
+    Serial.begin(9600);
+}
+
+void loop(){
+    data = analogRead(photoResistor);
+    data = map(data, 0, 4095, 0, 255);
+    data = int(estimate(float(data)));
+    Serial.printlnf("photo resistor = %d", data);
+}
+
+float estimate(float measurement){
+    
+    float kalmanGain = errorEstimate/(errorEstimate + ERROR_MEASUREMENT);
+    float currentEstimate = lastEstimate + kalmanGain * (measurement - lastEstimate);
+
+    errorEstimate =  (1.0 - kalmanGain ) * errorEstimate + abs(lastEstimate - currentEstimate) * PROCESS_NOISE;
+    lastEstimate = currentEstimate;
+    
+    return currentEstimate;
+}
