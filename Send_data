@@ -1,11 +1,6 @@
 
 #define DELAY_TIME 30000
 
-const float ERROR_MEASUREMENT = 2.0;	// Kalman filter constant
-
-float errorEstimate	= 0.2;	// Kalman filter variable
-float lastEstimate	= 0;	// Kalman filter variable
-
 int photoResistor = A0;
 int data          = 0;
 int led           = D7;  // The on-board LED
@@ -28,17 +23,5 @@ void loop() {
     }
     data = analogRead(photoResistor);
     data = map(data, 0, 4095, 0, 255);
-    data = int(estimate(float(data)));
     digitalWrite(led, LOW);     // Turn OFF the LED
-}
-
-float estimate(float measurement){
-
-    float kalmanGain = errorEstimate/(errorEstimate + ERROR_MEASUREMENT);
-    float currentEstimate = lastEstimate + kalmanGain * (measurement - lastEstimate);
-    
-    errorEstimate =  (1.0 - kalmanGain ) * errorEstimate;
-    lastEstimate = currentEstimate;
-    
-    return currentEstimate;
 }
